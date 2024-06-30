@@ -1,0 +1,8 @@
+2 Servo 180 Degree
+1 L298N
+1 Arduino
+4 Motor
+4 Wheel
+1 HC-05 or HC-06
+1 Battery Case
+3-5 Battery

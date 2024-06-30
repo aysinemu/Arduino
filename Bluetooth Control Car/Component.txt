@@ -1,0 +1,7 @@
+2 Motor
+2 Wheel
+1 Arduino Nano or Uno
+1 HC-05 or HC-06
+1 L298N
+1 Battery Case
+2-3 Battery

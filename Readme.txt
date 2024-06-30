@@ -1,0 +1,1 @@
+Các bạn nhớ khai báo lại các chân nha không là code không chạy đâu, nhớ kiểm tra kĩ xem đã cắm đúng chân chưa, test điện áp xem có bị rò rỉ ở đâu không nha.

@@ -1,0 +1,5 @@
+2 IR Sensor
+2 Motor
+1 Arduino (Uno or Nano)
+2 Wheel
+1 L298N
