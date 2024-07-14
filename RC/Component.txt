@@ -1,0 +1,9 @@
+1 Motor
+1 Arduino (Uno or Nano)
+4 Wheel
+1 L298N
+1 HC-05 or 06
+1 Servo
+1 Pin Case
+2 Battery
+1 RC Frame
