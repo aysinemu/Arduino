@@ -8,7 +8,7 @@ Component: in every Arduino project there is a component.txt it's will list out 
 
 ## Wire
 
-You can connect sensor and motor into any pin of Arduino and Motor Shield but make sure you note it down so later you need to change the pin number in the <Project>.ino code.
+You can connect Sensor and Motor into any pin of Arduino and Motor Shield but make sure you note it down so later you need to change the pin number in the <Project>.ino code.
 
 ## Test
 
