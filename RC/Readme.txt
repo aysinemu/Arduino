@@ -1,1 +1,3 @@
-Các bạn nhớ khai báo lại các chân nha không là code không chạy đâu, nhớ kiểm tra kĩ xem đã cắm đúng chân chưa, test điện áp xem có bị rò rỉ ở đâu không nha.Nhớ kiếm tra lại góc tọa độ của servo trước khi gắn vào không bị kẹt.
+Remember to re-declare all the pins, or the code won’t run.
+Make sure to carefully check if the pins are connected correctly, and test the voltage to see if there's any leakage.
+Be sure to check the servo's angle and position before attaching it to avoid it getting stuck.
