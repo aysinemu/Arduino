@@ -1,5 +1,7 @@
-Các bạn nhớ khai báo lại chân cảm biến, động cơ nha.
-Lưu ý cứ mỗi một đoạn code bool có nghĩa là nó đi thẳng và tới 1 lúc nào đó là nó rẽ.
-Thời gian đi thẳng và rẽ phụ thuộc vào công thức v = s/t
-Các bạn chỉnh lại thời gian sao cho đúng là xe chạy được.
-Hãy nhớ sủ dụng pin lion để xe nó đi đc lâu hơn, code này phụ thuộc khá nhiều vào thời gian nên pin yếu sẽ ảnh hưởng tới thời gian rất nhiều.
+Remember to re-declare the sensor and motor pins, everyone.
+Note that each bool code segment means it moves straight, and at some point, it turns.
+The time for moving straight and turning depends on the formula v=s/t.
+Adjust the timing so that the car runs correctly.
+Be sure to use a Li-ion battery so that the car can run longer, as this code relies heavily on timing, and weak batteries will significantly affect the timing.
+
+This code help you can easy finish any map by just adjust the timer.
