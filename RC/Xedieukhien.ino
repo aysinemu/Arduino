@@ -1,30 +1,22 @@
 #include "SoftwareSerial.h"
 #include <Servo.h>
+SoftwareSerial HC05 (0, 1); //TX, RX
 Servo servo;
-SoftwareSerial HC05 (1, 0); //TX, RX
-int ENA = 8;
-int IN1 = 9;
-int IN2 = 10;
-int IN3 = 11;
-int IN4 = 12;
-int ENB = 13;
-
+int IN3 = 6;
+int IN4 = 5;
+int ENB = 3;
 char dieu_khien;
-int Speed = 250;
+int SpeedDK = 255;
 
 void setup() {
   HC05.begin(9600);
-  pinMode(IN1, OUTPUT);
-  pinMode(IN2, OUTPUT);
+  Serial.begin(9600);
+  Serial.setTimeout(2);
   pinMode(IN3, OUTPUT);
   pinMode(IN4, OUTPUT);
-  pinMode(ENA, OUTPUT);
   pinMode(ENB, OUTPUT);
-
-  analogWrite(ENA, Speed);
-  analogWrite(ENB, Speed);
-
-  servo.attach(7);
+  servo.attach(4);
+  servo.write(95);
 }
 
 void loop() 
@@ -37,95 +29,92 @@ void loop()
     {
       case 'F':
         tien();
-        Serial.print("Chay tien");
         break;
       case 'B':
         lui();
-        Serial.print("Chay lui");
         break;
       case 'L':
         trai();
-        Serial.print("Re trai");
         break;
       case 'R':
         phai();
-        Serial.print("Re phai");
         break;
       case 'Q':
         trai();
-        Serial.print("Re phai");
         break;
       case 'E':
         phai();
-        Serial.print("Re phai");
         break;
       case 'C':
         lphai();
-        Serial.print("Re phai");
         break;
       case 'Z':
         ltrai();
-        Serial.print("Re phai");
         break;
       case 'S':
         Stop();
-        Serial.print("Dung");
         break;
     }
+  }else{
+    while (!Serial.available());
+    String input = Serial.readStringUntil('\n');
+    int angle = input.substring(0, input.indexOf(',')).toInt();
+    int Speed = input.substring(input.indexOf(',') + 1).toInt();
+    servo.write(angle);
+    Auto(Speed);
+    Serial.println("Angle: " + String(angle) + ", Speed: " + String(Speed));
   }
 }
 
+void Auto(int Speed) {
+  analogWrite(ENB, Speed);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+}
 
 void tien() {
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
-  servo.write(90);
-  digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, LOW);
+  servo.write(95);
+  analogWrite(ENB, SpeedDK);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
 }
 
 void lui() {
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, HIGH);
-  servo.write(90);
-  digitalWrite(IN3, LOW);
-  digitalWrite(IN4, HIGH);
+  servo.write(95);
+  analogWrite(ENB, SpeedDK);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
 }
 
 void ltrai() {
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
   servo.write(55);
-  digitalWrite(IN3, LOW);
-  digitalWrite(IN4, HIGH);
+  analogWrite(ENB, SpeedDK);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
 }
 
 void lphai() {
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
   servo.write(115);
+  analogWrite(ENB, SpeedDK);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+}
+void trai() {
+  servo.write(55);
+  analogWrite(ENB, SpeedDK);
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, HIGH);
 }
-void trai() {
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, HIGH);
-  servo.write(55);
-  digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, LOW);
-}
 
 void phai() {
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, HIGH);
   servo.write(115);
-  digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, LOW);
+  analogWrite(ENB, SpeedDK);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
 }
 void Stop() {
-  digitalWrite(IN1, LOW);
-  digitalWrite(IN2, LOW);
-  servo.write(90);
+  servo.write(95);
+  analogWrite(ENB, SpeedDK);
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, LOW);
 }
